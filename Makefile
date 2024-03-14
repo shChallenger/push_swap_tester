@@ -1,4 +1,4 @@
-SRC = nbr_gen.c
+SRC = nbr_gen.c nbr_gen_utils.c
 
 OBJ = $(SRC:.c=.o)
 

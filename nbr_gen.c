@@ -1,37 +1,16 @@
-#include <unistd.h>
-#include <stdlib.h>
-#include <sys/time.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   nbr_gen.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: shChallenger <shChallenger@student.42.fr>  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/14 06:25:07 by shChallenger      #+#    #+#             */
+/*   Updated: 2024/03/14 06:25:54 by shChallenger     ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-unsigned int	ft_atous(char *str)
-{
-	unsigned short	result;
-
-	result = 0;
-	while (*str == ' ')
-		str++;
-	while (*str > 47 && *str < 58)
-		result = ((result * 5) << 1) + *str++ - 48;
-	return (result);
-}
-
-void	ft_putnbr(unsigned int nbr)
-{
-	char	c;
-
-	if (nbr > 9)
-	{
-		ft_putnbr(nbr / 10);
-		c = (nbr % 10) + 48;
-	}
-	else
-		c = nbr + 48;
-	write(1, &c, 1);
-}
-
-unsigned int	ft_get_rdm_nbr(void)
-{
-	return (rand() & 0b11111111111111111);
-}
+#include "nbr_gen.h"
 
 void	ft_show_array(unsigned int *array, unsigned short quantity)
 {
@@ -49,28 +28,28 @@ void	ft_show_array(unsigned int *array, unsigned short quantity)
 	}
 }
 
-void	ft_create_show_random_array(unsigned short quantity)
+void	ft_create_show_random_array(const unsigned short QUANTITY)
 {
-	unsigned int	array[quantity];
+	unsigned int	array[QUANTITY];
 	unsigned int	rdm_nbr;
 	unsigned short	i;
 	unsigned short	j;
 
 	i = 0;
-	outer:
-	while (i != quantity)
+	while (i != QUANTITY)
 	{
 		rdm_nbr = ft_get_rdm_nbr();
 		j = 0;
 		while (j != i)
 		{
 			if (array[j] == rdm_nbr)
-				goto outer;
+				break ;
 			j++;
 		}
-		array[i++] = rdm_nbr;
+		if (j == i)
+			array[i++] = rdm_nbr;
 	}
-	ft_show_array(array, quantity);
+	ft_show_array(array, QUANTITY);
 }
 
 void	ft_show_help(char *program_name)
@@ -85,14 +64,6 @@ void	ft_show_help(char *program_name)
 	write(2, " <quantity>\n", 12);
 }
 
-long long	timeInMilliseconds(void)
-{
-    struct timeval	tv;
-
-    gettimeofday(&tv, NULL);
-    return (((long long)tv.tv_sec) * 1000) + (tv.tv_usec / 1000);
-}
-
 int	main(int argc, char **argv)
 {
 	unsigned short		quantity;
@@ -105,7 +76,7 @@ int	main(int argc, char **argv)
 	quantity = ft_atous(argv[1]);
 	if (quantity != 0)
 	{
-		srand(timeInMilliseconds());
+		srand(ft_get_ms_time());
 		ft_create_show_random_array(quantity);
 	}
 	return (0);

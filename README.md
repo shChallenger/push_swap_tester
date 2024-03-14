@@ -6,7 +6,9 @@ As an evaluator, it is a very simple and efficient choice.
 
 See :
 
-![image](https://github.com/shChallenger/push_swap_tester/assets/163363736/9316795d-11aa-4072-aa09-b77a7d323df1)
+![image](https://github.com/shChallenger/push_swap_tester/assets/163363736/d432689d-9ba4-4e64-a341-781ca566a5e4)
+
+![image](https://github.com/shChallenger/push_swap_tester/assets/163363736/52af3380-1de3-42ad-8020-53366d4aab50)
 
 **Installation**
 
