@@ -1,6 +1,6 @@
 #include <unistd.h>
 #include <stdlib.h>
-#include <time.h>
+#include <sys/time.h>
 
 unsigned int	ft_atous(char *str)
 {
@@ -85,6 +85,14 @@ void	ft_show_help(char *program_name)
 	write(2, " <quantity>\n", 12);
 }
 
+long long	timeInMilliseconds(void)
+{
+    struct timeval	tv;
+
+    gettimeofday(&tv, NULL);
+    return (((long long)tv.tv_sec) * 1000) + (tv.tv_usec / 1000);
+}
+
 int	main(int argc, char **argv)
 {
 	unsigned short		quantity;
@@ -97,7 +105,7 @@ int	main(int argc, char **argv)
 	quantity = ft_atous(argv[1]);
 	if (quantity != 0)
 	{
-		srand(time(NULL));
+		srand(timeInMilliseconds());
 		ft_create_show_random_array(quantity);
 	}
 	return (0);
