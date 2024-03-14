@@ -1,3 +1,5 @@
+**Test if your push_swap is OK with the provided 42 Tester**
+
 1. clone repository in your push_swap folder
 2. go to the push_swap_tester folder
 3. execute make
