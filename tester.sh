@@ -50,6 +50,7 @@ for ((i=0; i<301; i++)); do
     fi
     echo -ne "Array size $i: CHECKER $RES (Complexity: $LINES_COUNT)                 "\\r
     if [ "$RES" != "OK" ] && [ "$RES" != "NO_INST" ]; then
+    	echo "./push_swap $ARG" > command_log
     	printError "CHECKER KO ! See command_log for command detail" "Final Note: 0"
     fi
 done
@@ -65,8 +66,10 @@ for ((i=1; i<1000; i++)); do
     LINES_COUNT=$(($LINES_COUNT+0))
     echo -ne "Test $i/500: CHECKER $RES (Complexity: $LINES_COUNT)                  "\\r
     if [ "$RES" != "OK" ]; then
+    	echo "./push_swap $ARG" > command_log
     	printError "CHECKER KO ! See command_log for command detail" "Final Note: 0"
     elif [ $LINES_COUNT -gt 700 ]; then
+    	echo "./push_swap $ARG" > command_log
     	printError "TOO MUCH COMPLEXITY ! See command_log for command detail" "Final Note: 0"
     fi
 done
@@ -82,8 +85,10 @@ for ((i=1; i<500; i++)); do
     LINES_COUNT=$(($LINES_COUNT+0))
     echo -ne "Test $i/100: CHECKER $RES (Complexity: $LINES_COUNT)                  "\\r
     if [ "$RES" != "OK" ]; then
+    	echo "./push_swap $ARG" > command_log
     	printError "CHECKER KO ! See command_log for command detail" "Final Note: 80"
     elif [ $LINES_COUNT -gt 5500 ]; then
+    	echo "./push_swap $ARG" > command_log
     	printError "TOO MUCH COMPLEXITY ! See command_log for command detail" "Final Note: 80"
     fi
 done
