@@ -1,13 +1,12 @@
 **Testing Tool**
 
 This tool was designed for evaluators.
-It tests the norminette, the output and the complexity.
+It tests the norminette, the output and the complexity, with a random number generator.
 As an evaluator, it is a very simple and efficient choice.
 
 See :
 
 ![image](https://github.com/shChallenger/push_swap_tester/assets/163363736/52af3380-1de3-42ad-8020-53366d4aab50)
-
 
 **Installation**
 
