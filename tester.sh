@@ -78,7 +78,7 @@ done
 if [ "$SUCCESSNB" == "$LEN" ]; then
 	echo "${GREEN} Yep! $SUCCESSNB/$LEN Error handling is good :D                                              "
 else
-	echo "${RED} NOO! $SUCCESSNB/$LEN fucking bitch                                             "
+	echo "${RED} NOO! $SUCCESSNB/$LEN                                             "
 fi
 echo ""
 
